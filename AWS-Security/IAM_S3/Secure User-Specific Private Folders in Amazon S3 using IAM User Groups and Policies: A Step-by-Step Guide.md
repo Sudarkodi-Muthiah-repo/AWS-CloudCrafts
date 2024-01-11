@@ -193,6 +193,136 @@ Create another user hruser1.
 * In the success alert, review the message.
 ![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/fc536425-e260-40b6-b460-77ce2543a07b)
 
+📄 **Step 6 Testing the IAM user hruser1 specific permissions**
+On the top navigation bar, click the username to expand the dropdown menu. For Account ID, click the copy icon to copy the account number. We will use the Account ID in the next step.
+
+* In a new private browser tab (or window) address bar (not shown), type: https://us-east-1.console.aws.amazon.com/console/home
+
+To open an incognito window in Chrome, use Ctrl+Shift+N or Cmd+Shift+N.
+* Under Sign in, choose IAM user.
+* For Account ID, paste the account number that you just copied.
+* Click Next.
+* For IAM user name, type: hruser1 For Password, type: LabPassword123! which you creates in the previous step.
+* Click Sign in.
+* Review to ensure that you are now signed in as hruser1.
+* Go to the S3 service.
+* In the Buckets section, click the bucket name that starts with corp-XXXX.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/e1287221-bf95-4fe5-83e6-b41200356687)
+* On the Objects tab, click the hruser1/ folder.
+* Review to ensure that the mygoals.txt file appears in the hruser1 folder.
+* Choose the checkbox to select mygoals.txt.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/37a93062-ef63-4fcd-8372-ba9e7bbc8861)
+* Click Open.
+A new browser tab opens and displays the contents of the mygoals.txt file.
+
+* Review to see the private notes hruser1 created.
+
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/63d3f912-9689-4279-a8a3-41d089814966)
+* Close the browser tab that displays the notes.
+* On the objects tab, click the fnuser1/ folder.
+* Review the error alert to see that, when signed in as hruser1, you do not have access to view the contents of the fnuser1 folder.
+
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/1c3f2589-4da2-42c0-ac0c-7072d9da3cb7)
+* You can now close the private browsing window and go back to the AWS account.
+📄 **Step 7 Grant IAM user fnuser1 specific permissions**
+* Go to IAM console and click Users.
+* In the Users section, under User name, click fnuser1.
+* Click the Security credentials tab.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/5adda6f3-8655-4d69-8ca9-43c8ecdf3219)
+
+* Click Manage console access.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/9a86eaef-1ad6-493a-9bbd-b65473fba808)
+
+* In the pop-up box, select disable console access for a user.
+* Click Apply.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/10fec51c-9078-4ce7-96ef-1291a00d91d4)
+
+* Scroll down to Access keys and Click Create access key.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/4f2efe2e-b345-470a-b431-db62076fa441)
+
+* In the Access key best practices & alternatives step, choose Command Line Interface (CLI).
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/a9b665ee-ac4c-4c00-a5a6-9d1e753d380a)
+
+* Scroll down to the bottom of the page. Review Alternatives recommended.
+* Choose the check box to confirm your understanding of the alternative recommendation. Click Next.
+
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/3cbfe395-3acc-46ab-97d6-eff874740b61)
+* In the Set description tag step, click Create access key.
+* In the Retrieve access keys step, click the copy icon for both the Access key and Secret access key, and paste them into your text editor. You will use these in a later step.
+* Click Done.
+
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/2b9ff017-4e89-47db-8cc8-1a4352c56a97)
+
+📄 **Step 8 Testing the IAM user fnuser1 specific permissions**
+
+* Create an EC2 instance with a Security group to allow SSH traffic.
+* Use Amazon EC2 instance connect to connect the EC2 instance.
+* In the terminal, run: aws configure to configure the AWS CLI.
+* For the AWS Access Key ID, paste the value that you copied in an earlier step, and then press Enter.
+* For the AWS Secret Access Key, paste the value that you copied in an earlier step, and then press Enter.
+* For the Default region name, run: us-east-1
+* For Default output format, run: json
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/a20bdd07-1885-415e-aebb-c457b22a06bc)
+* In the terminal, replace the placeholder with the bucket name that starts with corp- that you saved in a previous step, run:
+```
+aws s3 ls <BUCKET-NAME>/
+```
+
+With the fnuser1 CLI credentials configured, you now have access to list the contents of the corp S3 bucket.
+* In the terminal, replacing the placeholder with the same bucket name as before, run:
+```
+aws s3 ls <BUCKET-NAME>/hruser1/
+```
+* Review that you do not have access to view the hruser1/ S3 folder.
+* In the terminal, replacing the placeholder with the same bucket name as before, run:
+```
+aws s3 ls <BUCKET-NAME>/fnuser1/
+```
+With the fnuser1 CLI credentials, you now have access to list the contents of the fnuser1/ S3 folder.
+
+* To copy the todo_list.txt file from Amazon S3 to the current directory and keep the same file name, run:
+
+```
+aws s3 cp s3://<BUCKET-NAME>/fnuser1/todo_list.txt .
+```
+**Note:** Be sure to include the . (period) at the end of the command.
+* To see the contents of the file, run:
+```
+more todo_list.txt
+```
+Your command should look similar to what is displayed in the example screenshot.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/c0545556-5d81-48cd-8db8-fb27272912b4)
+
+* To upload a file to the S3 bucket folder fnuser1, run:
+```
+aws s3 cp <file_name> s3://<BUCKET-NAME>/fnuser1/
+```
+To list the files from the fnuser1, run
+```
+aws s3 ls <BUCKET-NAME>/fnuser1/
+```
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/e893ac70-26b1-4eac-999a-69ed8dcd0016)
+
+* You can check the same on the S3 console.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/b5f5d531-4abd-4824-939a-12f57ddbfe0b)
+
+**We restricted successfully an AWS IAM user to access only specific folders of Amazon S3.**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

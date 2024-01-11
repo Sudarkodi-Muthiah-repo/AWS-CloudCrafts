@@ -59,7 +59,11 @@ To implement this use case, you would need to create IAM users for users and con
     ]
 }
 ```
-      * In this policy, when a user makes a request to AWS, the requester’s name replaces the variable. For example, when fnuser1 makes a request, ${aws:username} resolves to fnuser1.
+
+
+
+   * In this policy, when a user makes a request to AWS, the requester’s name replaces the variable. For example, when fnuser1 makes a request,
+      **${aws: username}** resolves to **fnuser1**.
 4. **Test Access:** Test the access for each user by attempting to upload or download files from their respective folders.
 
 ## Solution Architecture
@@ -76,6 +80,50 @@ In this step, we will create a bucket, add folders (fnuser1 and hruser1) to the 
 * Leave remaining as default.
 
 **Note:** For step-by-step instructions, see https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html
+After the bucket has been created,
+* In the Buckets list, choose the name of the bucket that you created.
+* Choose Create folder.
+* Enter a name for the folder fnuser1. Name of the folder is same as the name of the user. Then choose Create folder.
+* Repeat the steps 5 and 6 for hruser1.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/fc038353-4b9a-4ebf-a04a-34083d96d447)
 
+**Note:** For step-by-step instructions to create a folder, see [Organizing objects in the Amazon S3 console by using folders](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html)https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html in the Amazon Simple Storage Service User Guide.
+📄 **Step 2 Uploading objects**
+* On the Objects tab, review to ensure that two folders appear, one for each user defined in the system.
+* Click Buckets to return to the list of buckets.
+* Click the folder hruser1/ and click upload. Choose file mygoals.txt to upload.
+* After uploading this file, go back to the folder fnuser1/ and click upload. Upload the file todo_list.txt.
 
+**Note:** For step-by-step instructions, see https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html
+
+📄 **Step 3 Creating IAM users**
+Use the IAM console to add two IAM users, fnuser1 and hruser1, to your AWS account. Also create a user group named s3-private-bucket-access, and then add both users to the group.
+* On the Console Home page, select the IAM service.
+* In the navigation pane, select Users and then select Create user.
+
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/76aefea9-c99f-455f-8c32-f29396aa91f2)
+
+* On the Specify user details page, under User details, in User name, enter the name for the new user as fnuser1.
+* Select Next.  
+
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/94bf2466-ec68-454d-8208-3c0e73183fc6)
+
+* On the Set permissions page, specify how you want to assign permissions for this user. Select Add user to group
+* Click next
+* Review and create user.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/9668ed2e-75e3-46de-bfd0-63fe992b3e40)
+Create another user hruser1.
+* On the Specify user details page, under User details, in User name, enter the name for the new user as hruser1.
+* Select Provide user access to the — AWS Management Console optional This produces AWS Management Console sign-in credentials for the hruser1.
+* Select I want to create an IAM user and continue following this procedure.
+
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/4d7e6dab-80a3-4d6a-9330-2f288ca1ab0f)
+* For Console password,select Custom password
+* Enter a password LabPassword123! and Click Next
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/5e9c2ef9-9aa1-4340-9d9f-9fcb479cd2e2)
+* On the Set permissions page,Select Add user to group.
+* Click Next
+* Review and create user.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/24ffaaa5-2fd0-434c-9ee5-afe79d91f933)
+* Copy and save the user name and password for later use.
   

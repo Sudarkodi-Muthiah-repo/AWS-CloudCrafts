@@ -88,6 +88,7 @@ After the bucket has been created,
 ![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/fc038353-4b9a-4ebf-a04a-34083d96d447)
 
 **Note:** For step-by-step instructions to create a folder, see [Organizing objects in the Amazon S3 console by using folders](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html)https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html in the Amazon Simple Storage Service User Guide.
+
 📄 **Step 2 Uploading objects**
 * On the Objects tab, review to ensure that two folders appear, one for each user defined in the system.
 * Click Buckets to return to the list of buckets.
@@ -95,6 +96,7 @@ After the bucket has been created,
 * After uploading this file, go back to the folder fnuser1/ and click upload. Upload the file todo_list.txt.
 
 **Note:** For step-by-step instructions, see https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html
+
 
 📄 **Step 3 Creating IAM users**
 Use the IAM console to add two IAM users, fnuser1 and hruser1, to your AWS account. Also create a user group named s3-private-bucket-access, and then add both users to the group.
@@ -111,19 +113,26 @@ Use the IAM console to add two IAM users, fnuser1 and hruser1, to your AWS accou
 * On the Set permissions page, specify how you want to assign permissions for this user. Select Add user to group
 * Click next
 * Review and create user.
+  
 ![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/9668ed2e-75e3-46de-bfd0-63fe992b3e40)
+
 Create another user hruser1.
 * On the Specify user details page, under User details, in User name, enter the name for the new user as hruser1.
 * Select Provide user access to the — AWS Management Console optional This produces AWS Management Console sign-in credentials for the hruser1.
 * Select I want to create an IAM user and continue following this procedure.
 
 ![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/4d7e6dab-80a3-4d6a-9330-2f288ca1ab0f)
+
 * For Console password,select Custom password
 * Enter a password LabPassword123! and Click Next
 ![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/5e9c2ef9-9aa1-4340-9d9f-9fcb479cd2e2)
+
 * On the Set permissions page,Select Add user to group.
 * Click Next
 * Review and create user.
+  
 ![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/24ffaaa5-2fd0-434c-9ee5-afe79d91f933)
+
 * Copy and save the user name and password for later use.
   
+📄 **Step 4 Creating user groups**

@@ -136,3 +136,65 @@ Create another user hruser1.
 * Copy and save the user name and password for later use.
   
 📄 **Step 4 Creating user groups**
+* Go to IAM console.
+* In the navigation pane, choose User groups and then choose Create group.
+  
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/e1fa9aa0-a491-46ee-8507-75e5cff41498)
+
+*For User group name, type the name of the group as s3-private-bucket-access.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/b7885fc3-5ef6-4993-81d7-dda9310f2a64)
+
+* Choose Create group.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/23bfbb45-846d-45f6-a857-04e8611dba6c)
+
+📄 Step 5 Creating IAM Policy and attaching the policy
+
+* In the left navigation pane, click Policies.
+* In the Policies section, click Create Policy.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/e7002667-f3c3-431e-b88d-156e3ccc6ea8)
+
+* For Create policy (step 1), click the JSON tab.
+* Select (highlight) and delete the existing statement.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/e8eabbb0-c463-4754-8f39-94404f995677)
+
+* In the JSON tab terminal window, copy the policy from the following GitHub repo and paste it.
+  
+![](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/blob/main/AWS-Security/IAM_S3/lab_s3_policy.json)
+
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/8ff76928-48c5-4b7e-aa05-a4b839a41a9c)
+
+* Click Next.
+* For Create policy (step 2), click Next: Review.
+* For Create policy (step 3), for Name, type: lab_s3_policy
+* For Description, type a description that explains the purpose of the policy, such as the Policy to grant private folder access to users.
+* Click Create policy.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/b6033126-b2a5-4cff-bcc8-a8fd5f90a38a)
+
+* In the success alert, review the message.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/eccc8139-6fd4-4292-ba01-1f1b8c5c158a)
+
+* Go to User groups.
+* In the User groups section, under Group name, click the s3-private-bucket-access group.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/9cd78269-3904-474b-8c07-3f2192c2ec03)
+
+* Click the Users tab and click Add users.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/9c627852-3dde-43f3-a7cc-23853494504b)
+* Under User name, choose the two checkboxes to select both users fnuser1 and hruser1, and then click Add users.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/50b575ab-885e-40b1-b748-ec10d7e3fcd3)
+* On the Users tab, review to ensure that both users were successfully added to the group.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/955e7e11-ced5-4cd5-a2e9-885f60604ebe)
+* Click the Permissions tab.
+* In the Permissions policies section, click Add permissions to expand the dropdown menu. Choose Attach policies.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/fe73cece-dfad-490c-83d5-1b65881a242d)
+* In the Other permission policies filter box, type: lab_s3_policy and press Enter.
+* Under Policy name, choose the check box to select lab_s3_policy.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/0c28ffeb-74bc-4a9c-b70e-a68c469f98dd)
+* Click Attach policies.
+* In the success alert, review the message.
+![image](https://github.com/Sudarkodi-Muthiah-repo/AWS-CloudCrafts/assets/101267167/fc536425-e260-40b6-b460-77ce2543a07b)
+
+
+
+
+
+
